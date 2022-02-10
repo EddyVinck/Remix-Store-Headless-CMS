@@ -1,0 +1,44 @@
+{
+  "id": "homepage",
+  "label": "Homepage",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "Unique ID",
+          "placeholder": "home"
+        },
+        "type": "UID"
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "hero_slice": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    },
+    "SEO": {
+      "metaDescription": {
+        "config": {
+          "label": "Meta Descripotion",
+          "placeholder": "No more than 155-160 characters!"
+        },
+        "type": "Text"
+      },
+      "metaTitle": {
+        "config": {
+          "label": "Meta title",
+          "placeholder": ""
+        },
+        "type": "Text"
+      }
+    }
+  }
+}

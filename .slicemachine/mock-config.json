@@ -1,0 +1,47 @@
+{
+  "_cts": {
+    "homepage": {},
+    "contactpage": {}
+  },
+  "slices": {
+    "HeroSlice": [
+      {
+        "variation": "default-slice",
+        "name": "Default slice",
+        "slice_type": "hero_slice",
+        "items": [],
+        "primary": {
+          "title": [
+            {
+              "type": "heading1",
+              "text": "Iterate next-generation content",
+              "spans": []
+            }
+          ],
+          "description": [
+            {
+              "type": "paragraph",
+              "text": "Esse Lorem reprehenderit exercitation officia exercitation ad officia eu excepteur.",
+              "spans": []
+            }
+          ],
+          "ctaLink": {
+            "link_type": "Web",
+            "url": "http://twitter.com"
+          },
+          "ctaText": "empower leading-edge systems",
+          "backgroundImage": {
+            "dimensions": {
+              "width": 1440,
+              "height": 500
+            },
+            "alt": "Placeholder image",
+            "copyright": null,
+            "url": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68?w=1440&h=500&fit=crop"
+          }
+        }
+      }
+    ],
+    "TestSlice": {}
+  }
+}
