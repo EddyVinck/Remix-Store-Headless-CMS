@@ -7,19 +7,24 @@
     "build": "remix build",
     "dev": "remix dev",
     "postinstall": "remix setup node",
-    "start": "remix-serve build"
+    "start": "remix-serve build",
+    "slicemachine": "start-slicemachine"
   },
   "dependencies": {
+    "@prismicio/client": "^6.2.0",
+    "@prismicio/helpers": "^2.1.1",
     "@remix-run/react": "^1.1.3",
+    "@remix-run/serve": "^1.1.3",
+    "prismic-reactjs": "^1.3.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "remix": "^1.1.3",
-    "@remix-run/serve": "^1.1.3"
+    "remix": "^1.1.3"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.1.3",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
+    "slice-machine-ui": "^0.2.0",
     "typescript": "^4.1.2"
   },
   "engines": {
