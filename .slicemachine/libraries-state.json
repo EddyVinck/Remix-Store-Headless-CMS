@@ -106,7 +106,7 @@
         "meta": {
           "fileName": "index",
           "isDirectory": true,
-          "extension": "js"
+          "extension": "tsx"
         },
         "screenshotPaths": {
           "default-slice": {
