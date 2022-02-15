@@ -7,6 +7,14 @@ import {
   ScrollRestoration,
 } from "remix";
 import type { MetaFunction } from "remix";
+import styles from "./styles/app.css";
+import { PrismicProvider } from "@prismicio/react";
+import { linkResolver } from "./utils/prismic.server";
+import { Link } from "./components/link";
+
+export function links() {
+  return [{ rel: "stylesheet", href: styles }];
+}
 
 export const meta: MetaFunction = () => {
   return { title: "New Remix App" };
@@ -22,7 +30,12 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <PrismicProvider
+          linkResolver={linkResolver}
+          internalLinkComponent={Link}
+        >
+          <Outlet />
+        </PrismicProvider>
         <ScrollRestoration />
         <Scripts />
         {process.env.NODE_ENV === "development" && <LiveReload />}

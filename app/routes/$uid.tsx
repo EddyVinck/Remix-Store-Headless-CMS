@@ -27,18 +27,15 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 export default function Index() {
   const data = useLoaderData<LoaderData>();
-
+  console.log(data);
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Welcome to Remix</h1>
-      <p>Loader data:</p>
       <SliceZone<any, SliceZoneContext>
         slices={data.slices}
         components={{
           hero_slice: HeroSlice,
         }}
       />
-      <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   );
 }

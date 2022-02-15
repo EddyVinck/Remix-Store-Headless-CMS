@@ -2,6 +2,7 @@
 // In Node.js Prismic projects, you must provide a fetch method to the
 // Prismic client.
 import * as prismic from "@prismicio/client";
+import { LinkResolverFunction } from "@prismicio/helpers";
 
 const repoName = "remix-headless"; // Fill in your repository name.
 const accessToken = ""; // If your repo is private, add an access token.
@@ -24,15 +25,22 @@ export const contactPageRoute = {
   path: "/contact",
 };
 
-export const prismicRoutes = [
-  rootUidRoute,
-  homepageRoute,
-  contactPageRoute,
-  {
-    type: "doesnotexist",
-    path: "/lolwhat",
-  },
-];
+export const prismicRoutes = [rootUidRoute, homepageRoute, contactPageRoute];
+
+export const linkResolver: LinkResolverFunction = (document) => {
+  if (document.isBroken) {
+    return "/not-found";
+  }
+  if (document.type === "page") {
+    // return `/${doc.lang}/${doc.uid}`;
+    return `/${document.uid}`;
+  }
+  if (document.type === "home") {
+    // return `/${doc.lang}`;
+    return "/";
+  }
+  return "/";
+};
 
 export const prismicClient = prismic.createClient(endpoint, {
   fetch,

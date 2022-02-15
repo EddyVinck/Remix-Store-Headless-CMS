@@ -1,6 +1,7 @@
 import React from "react";
 import { PrismicLink, PrismicRichText, SliceLike } from "@prismicio/react";
 import { SliceComponent } from "~/types/prismic";
+import { linkResolver } from "~/utils/prismic.server";
 
 interface SliceFields extends SliceLike {
   primary: any;
@@ -16,7 +17,7 @@ const HeroSlice: SliceComponent<SliceFields> = ({
 }) => {
   return (
     <section
-      className="relative pt-28 pb-16 lg:pt-52 lg:pb-32"
+      className="relative pt-28 pb-16 lg:pt-52 lg:pb-32 bg-no-repeat bg-cover"
       style={{ backgroundImage: `url(${slice.primary.backgroundImage.url})` }}
     >
       <div className={`absolute inset-0 bg-white opacity-80`}></div>
@@ -43,10 +44,11 @@ const HeroSlice: SliceComponent<SliceFields> = ({
             }}
           />
           <PrismicLink
-            field={slice.primary.primaryCTA}
+            field={slice.primary.ctaLink}
+            linkResolver={linkResolver}
             className="btn btn-primary"
           >
-            {slice.primary.PrimaryCTAText}
+            {slice.primary.ctaText}
           </PrismicLink>
         </div>
       </div>
