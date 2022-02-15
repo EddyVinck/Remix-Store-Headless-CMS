@@ -1,8 +1,8 @@
 import { json, LoaderFunction, useLoaderData } from "remix";
 import { prismicClient } from "~/utils/prismic.server";
 import { SliceLike, SliceZone } from "@prismicio/react";
-import { useEffect } from "react";
 import HeroSlice from "../../slices/HeroSlice";
+import { SliceZoneContext } from "~/types/prismic";
 // import {} from "@prismicio/helpers";
 
 type LoaderData = { slices: SliceLike<string>[] };
@@ -26,7 +26,7 @@ export default function Index() {
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <h1>Welcome to Remix</h1>
       <p>Loader data:</p>
-      <SliceZone
+      <SliceZone<any, SliceZoneContext>
         slices={data.slices}
         components={{
           hero_slice: HeroSlice,

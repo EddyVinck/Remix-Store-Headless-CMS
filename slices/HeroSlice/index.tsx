@@ -1,18 +1,19 @@
 import React from "react";
-import {
-  PrismicLink,
-  PrismicRichText,
-  SliceComponentProps,
-  SliceComponentType,
-  SliceLike,
-} from "@prismicio/react";
+import { PrismicLink, PrismicRichText, SliceLike } from "@prismicio/react";
+import { SliceComponent } from "~/types/prismic";
 
-interface Props {
+interface Props extends SliceLike {
   primary: any;
-  slice: any;
+  items: Array<any>;
 }
 
-const HeroSlice: React.FC<any> = ({ slice }) => {
+const HeroSlice: SliceComponent<Props> = ({
+  slice,
+  index,
+  context,
+  children,
+  slices,
+}) => {
   return (
     <section
       className="relative pt-28 pb-16 lg:pt-52 lg:pb-32"
