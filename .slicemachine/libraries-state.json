@@ -108,7 +108,13 @@
           "isDirectory": true,
           "extension": "tsx"
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default-slice": {
+            "path": "/Users/eddy.vinck/dev/study/remix/remix-headless-cms/.slicemachine/assets/slices/HeroSlice/default-slice/preview.png",
+            "width": 800,
+            "height": 66
+          }
+        }
       }
     }
   }

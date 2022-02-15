@@ -12,10 +12,10 @@ const endpoint = prismic.getEndpoint(repoName); // Format your endpoint.
 // Types in your project, and edit the paths to match the routing in your
 // project.
 const routes = [
-  // {
-  //   type: "page",
-  //   path: "/:uid",
-  // },
+  {
+    type: "page",
+    path: "/:uid",
+  },
   {
     type: "homepage",
     path: "/",
