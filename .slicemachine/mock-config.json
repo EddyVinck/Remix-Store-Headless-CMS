@@ -14,14 +14,14 @@
           "title": [
             {
               "type": "heading1",
-              "text": "Iterate next-generation content",
+              "text": "Leverage mission-critical metrics",
               "spans": []
             }
           ],
           "description": [
             {
               "type": "paragraph",
-              "text": "Esse Lorem reprehenderit exercitation officia exercitation ad officia eu excepteur.",
+              "text": "Excepteur sunt enim sunt velit.",
               "spans": []
             }
           ],
@@ -29,7 +29,7 @@
             "link_type": "Web",
             "url": "http://twitter.com"
           },
-          "ctaText": "empower leading-edge systems",
+          "ctaText": "maximize intuitive portals",
           "backgroundImage": {
             "dimensions": {
               "width": 1440,
@@ -37,7 +37,7 @@
             },
             "alt": "Placeholder image",
             "copyright": null,
-            "url": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68?w=1440&h=500&fit=crop"
+            "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=1440&h=500&fit=crop"
           }
         }
       }
