@@ -2,12 +2,12 @@ import React from "react";
 import { PrismicLink, PrismicRichText, SliceLike } from "@prismicio/react";
 import { SliceComponent } from "~/types/prismic";
 
-interface Props extends SliceLike {
+interface SliceFields extends SliceLike {
   primary: any;
   items: Array<any>;
 }
 
-const HeroSlice: SliceComponent<Props> = ({
+const HeroSlice: SliceComponent<SliceFields> = ({
   slice,
   index,
   context,

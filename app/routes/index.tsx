@@ -1,5 +1,5 @@
 import { json, LoaderFunction, useLoaderData } from "remix";
-import { prismicClient } from "~/utils/prismic.server";
+import { homepageRoute, prismicClient } from "~/utils/prismic.server";
 import { SliceLike, SliceZone } from "@prismicio/react";
 import HeroSlice from "../../slices/HeroSlice";
 import { SliceZoneContext } from "~/types/prismic";
@@ -9,7 +9,9 @@ type LoaderData = { slices: SliceLike[]; doc: unknown };
 
 export const loader: LoaderFunction = async () => {
   try {
-    const doc = await prismicClient.getByUID("homepage", "home", {});
+    const doc = await prismicClient.getByUID("homepage", "home", {
+      routes: [homepageRoute],
+    });
     const data: LoaderData = { slices: doc.data.slices, doc };
     return json(data);
   } catch (error) {

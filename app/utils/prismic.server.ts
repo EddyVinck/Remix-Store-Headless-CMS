@@ -11,23 +11,31 @@ const endpoint = prismic.getEndpoint(repoName); // Format your endpoint.
 // structure URLs in your project. Update the types to match the Custom
 // Types in your project, and edit the paths to match the routing in your
 // project.
-const routes = [
+export const rootUidRoute = {
+  type: "page",
+  path: "/:uid",
+};
+export const homepageRoute = {
+  type: "homepage",
+  path: "/",
+};
+export const contactPageRoute = {
+  type: "contactpage",
+  path: "/contact",
+};
+
+export const prismicRoutes = [
+  rootUidRoute,
+  homepageRoute,
+  contactPageRoute,
   {
-    type: "page",
-    path: "/:uid",
-  },
-  {
-    type: "homepage",
-    path: "/",
-  },
-  {
-    type: "contactpage",
-    path: "/contact",
+    type: "doesnotexist",
+    path: "/lolwhat",
   },
 ];
 
 export const prismicClient = prismic.createClient(endpoint, {
   fetch,
   accessToken,
-  routes,
+  routes: prismicRoutes,
 });
