@@ -1,5 +1,5 @@
 import { json, LoaderFunction, useLoaderData } from "remix";
-import { homepageRoute, linkResolver } from "~/utils/prismic.server";
+import { homepageRoute, linkResolver } from "~/utils/prismic";
 import { PrismicProvider, SliceLike, SliceZone } from "@prismicio/react";
 import HeroSlice from "../../slices/HeroSlice";
 import { SliceZoneContext } from "~/types/prismic";
@@ -23,9 +23,7 @@ export const loader: LoaderFunction = async () => {
 
 export default function Index() {
   const data = useLoaderData<LoaderData>();
-  console.log(data);
   return (
-    // <PrismicProvider linkResolver={linkResolver}>
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <SliceZone<any, SliceZoneContext>
         slices={data.slices}
@@ -34,6 +32,5 @@ export default function Index() {
         }}
       />
     </div>
-    // </PrismicProvider>
   );
 }

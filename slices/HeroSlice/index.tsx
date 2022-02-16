@@ -1,7 +1,6 @@
 import React from "react";
 import { PrismicLink, PrismicRichText, SliceLike } from "@prismicio/react";
 import { SliceComponent } from "~/types/prismic";
-import { linkResolver } from "~/utils/prismic.server";
 
 interface SliceFields extends SliceLike {
   primary: any;
@@ -45,7 +44,6 @@ const HeroSlice: SliceComponent<SliceFields> = ({
           />
           <PrismicLink
             field={slice.primary.ctaLink}
-            linkResolver={linkResolver}
             className="btn btn-primary"
           >
             {slice.primary.ctaText}

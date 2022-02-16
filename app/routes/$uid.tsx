@@ -1,6 +1,6 @@
 import { json, LoaderFunction, useLoaderData } from "remix";
 import invariant from "tiny-invariant";
-import { rootUidRoute } from "~/utils/prismic.server";
+import { rootUidRoute } from "~/utils/prismic";
 import { SliceLike, SliceZone } from "@prismicio/react";
 import HeroSlice from "../../slices/HeroSlice";
 import { SliceZoneContext } from "~/types/prismic";
@@ -27,7 +27,7 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 export default function Index() {
   const data = useLoaderData<LoaderData>();
-  console.log(data);
+
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <SliceZone<any, SliceZoneContext>

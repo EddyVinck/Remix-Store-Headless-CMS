@@ -7,10 +7,8 @@ import {
   ScrollRestoration,
 } from "remix";
 import type { MetaFunction } from "remix";
-import styles from "./styles/app.css";
-import { PrismicProvider } from "@prismicio/react";
-import { linkResolver } from "./utils/prismic.server";
-import { Link } from "./components/link";
+import styles from "~/styles/app.css";
+import { PrismicProvider } from "~/components/prismic/provider";
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }];
@@ -30,10 +28,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <PrismicProvider
-          linkResolver={linkResolver}
-          internalLinkComponent={Link}
-        >
+        <PrismicProvider>
           <Outlet />
         </PrismicProvider>
         <ScrollRestoration />
