@@ -1,9 +1,9 @@
 import { json, LoaderFunction, useLoaderData } from "remix";
-import { homepageRoute, linkResolver } from "~/utils/prismic";
-import { PrismicProvider, SliceLike, SliceZone } from "@prismicio/react";
+import { homepageRoute } from "~/utils/prismic";
+import { SliceLike, SliceZone } from "@prismicio/react";
 import HeroSlice from "../../slices/HeroSlice";
 import { SliceZoneContext } from "~/types/prismic";
-import { getPrismicDocumentFromCache } from "~/utils/prismic-cache.server";
+import { getPrismicDocumentFromCache } from "~/utils/prismic.server";
 
 type LoaderData = { slices: SliceLike[]; doc: unknown };
 
