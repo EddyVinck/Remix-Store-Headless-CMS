@@ -12,6 +12,10 @@ npm run dev
 
 This starts your app in development mode, rebuilding assets on file changes.
 
+**Note**: the in-memory cache will not work in development mode, see this tweet by [Kent C. Dodds](https://twitter.com/kentcdodds/status/1486127807461670914):
+
+> During development though most in-memory stuff goes away on every network request...
+
 ### Prismic Slicemachine
 
 To use the slice machine, you need to login with prismic and start the slicemachine locally.
