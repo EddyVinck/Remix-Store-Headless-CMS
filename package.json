@@ -10,7 +10,8 @@
     "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
     "postinstall": "remix setup node",
     "start": "remix-serve build",
-    "slicemachine": "start-slicemachine"
+    "slicemachine": "start-slicemachine",
+    "prismic": "prismic"
   },
   "dependencies": {
     "@prismicio/client": "^6.2.0",
@@ -34,6 +35,7 @@
     "concurrently": "^7.0.0",
     "next-slicezone": "^0.2.0",
     "postcss": "^8.4.6",
+    "prismic-cli": "^4.2.2",
     "slice-machine-ui": "^0.2.0",
     "tailwindcss": "^3.0.22",
     "typescript": "^4.1.2"

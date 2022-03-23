@@ -12,6 +12,15 @@ npm run dev
 
 This starts your app in development mode, rebuilding assets on file changes.
 
+### Prismic Slicemachine
+
+To use the slice machine, you need to login with prismic and start the slicemachine locally.
+
+```sh
+npm run prismic login
+npm run slicemachine # opens on http://localhost:9999
+```
+
 ## Deployment
 
 First, build your app for production:
