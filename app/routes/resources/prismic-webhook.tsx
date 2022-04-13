@@ -96,30 +96,20 @@ export const action: ActionFunction = async ({ request }) => {
   }
   const payload = await request.json();
 
-  // console.log(JSON.stringify(payload, null, 2));
-
   if (isPublishPayload(payload)) {
     const documents = payload.documents;
+    const secret = payload.secret;
+
+    if (secret !== process.env.PRISMIC_CONTENT_UPDATE_WEBHOOK_SECRET) {
+      return json({ message: "Signature mismatch" }, 401);
+    }
+
     console.log("publish payload with docs: ", { documents });
 
-    documents.forEach(async (docId) => {
-      console.log(`Publishing (or unpublishing) ${docId}`);
+    documents.forEach((docId) => {
       updatePrismicDocumentInCache(docId);
-      return;
     });
   }
-
-  /* Validate the webhook */
-  // const signature = request.headers.get("X-Hub-Signature-256");
-  // const generatedSignature = `sha256=${crypto
-  //   .createHmac("sha256", process.env.GITHUB_WEBHOOK_SECRET)
-  //   .update(JSON.stringify(payload))
-  //   .digest("hex")}`;
-  // if (signature !== generatedSignature) {
-  //   return json({ message: "Signature mismatch" }, 401);
-  // }
-
-  /* process the webhook (e.g. enqueue a background job) */
 
   return json({ success: true }, 200);
 };
