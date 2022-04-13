@@ -11,17 +11,13 @@ export const prismicClient = prismic.createClient(endpoint, {
 });
 
 const prismicCache = new NodeCache({
-  stdTTL: 10, // seconds the cache will persist
+  stdTTL: 60 * 10, // seconds the cache will persist
   maxKeys: 100, // maximum amount of entries, an error is thrown if we try to go over it
 });
 
-function getCacheKey(
-  customType: string,
-  uid: string,
-  params: Record<string, any> = {}
-): string {
+function getCacheKey(customType: string, uid: string): string {
   try {
-    return `${customType}-${uid}-${JSON.stringify(params)}`;
+    return `${customType}-${uid}`;
   } catch (error) {
     throw new Error(
       `Could not create cache key with arguments for customType ${customType} and UID ${uid}!`
@@ -34,7 +30,7 @@ export async function getPrismicDocumentFromCache(
   uid: string,
   params: Record<string, any>
 ): Promise<ReturnType<typeof prismicClient.getByUID>> {
-  const key = getCacheKey(customType, uid, params);
+  const key = getCacheKey(customType, uid);
   const cacheHit = prismicCache.get<PrismicDocument>(key);
   const cacheMessage = `for key ${key}`;
 
@@ -54,4 +50,44 @@ export async function getPrismicDocumentFromCache(
   console.log(`[cache] HIT ${cacheMessage}`);
 
   return cacheHit;
+}
+
+function getCacheKeysStartingWith(prefix: string): string[] {
+  return Object.keys(prismicCache.keys()).filter((key) =>
+    key.startsWith(prefix)
+  );
+}
+
+function clearCacheKeysStartingWith(prefix: string): void {
+  getCacheKeysStartingWith(prefix).forEach((key) => prismicCache.del(key));
+}
+
+export async function updatePrismicDocumentInCache(id: string): Promise<void> {
+  // Use ID we get from webhook to get document from Prismic
+  // This will return a document containing a UID and type, which we use for our cache key
+  // Which we can use to update the correct cache entry
+  // When we have the UID, we also need to bust the cache for routes with specific params
+
+  try {
+    const doc = await prismicClient.getByID(id);
+    const uid = doc.uid;
+    const customType = doc.type;
+
+    if (!uid) {
+      // This should theoretically never happen, but just in case and to make TypeScript happy
+      throw new Error(
+        `Could not update cache for document with ID ${id}, missing UID!`
+      );
+    }
+
+    const key = getCacheKey(customType, uid);
+    clearCacheKeysStartingWith(key);
+    prismicCache.set(key, doc);
+
+    return;
+  } catch (error) {
+    throw new Response("Not found.", {
+      status: 404,
+    });
+  }
 }

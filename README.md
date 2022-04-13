@@ -16,6 +16,14 @@ This starts your app in development mode, rebuilding assets on file changes.
 
 > During development though most in-memory stuff goes away on every network request...
 
+### Prismic Webhook
+
+Turn on ngrok and update the (development) webhook URL in your Prismic dashboard. The webhook URL should be `http://RANDOM-ID.ngrok.io/resources/prismic-webhook`.
+
+```sh
+ngrok http 3000
+```
+
 ### Prismic Slicemachine
 
 To use the slice machine, you need to login with prismic and start the slicemachine locally.
