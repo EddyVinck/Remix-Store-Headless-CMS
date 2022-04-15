@@ -1,0 +1,33 @@
+{
+  "id": "85e3e09c-3bf5-42a8-bf08-2a6e8e4d9d83",
+  "uid": "ullam-soluta-architecto",
+  "type": "staff-picks",
+  "data": {
+    "picks": [
+      {
+        "bookRelation": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        }
+      },
+      {
+        "bookRelation": {
+          "link_type": "Web",
+          "url": "http://twitter.com"
+        }
+      },
+      {
+        "bookRelation": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        }
+      },
+      {
+        "bookRelation": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        }
+      }
+    ]
+  }
+}
