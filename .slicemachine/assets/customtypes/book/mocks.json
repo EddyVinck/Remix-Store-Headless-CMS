@@ -1,0 +1,72 @@
+{
+  "id": "984ef3fb-2afe-45b2-a599-b4f85a36ac2a",
+  "uid": "aut-ex-voluptas",
+  "type": "book",
+  "data": {
+    "title": "maximize front-end convergence",
+    "authorName": "John Doe",
+    "description": [
+      {
+        "type": "paragraph",
+        "text": "Ad ut reprehenderit veniam culpa consectetur tempor. Nisi consectetur in incididunt ad in amet. Aliquip nostrud pariatur enim qui aute sit culpa cillum deserunt voluptate quis mollit laboris ad.",
+        "spans": []
+      }
+    ],
+    "category": {
+      "link_type": "Web",
+      "url": "https://slicemachine.dev"
+    },
+    "priceInCents": 999,
+    "coverImage": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": "Placeholder image",
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43?w=900&h=500&fit=crop"
+    },
+    "chapters": [
+      {
+        "title": "redefine e-business portals",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Mollit non ex consequat non deserunt consectetur anim magna voluptate. Anim tempor fugiat officia eiusmod anim laboris cillum. Non laborum est incididunt culpa deserunt veniam cillum proident exercitation reprehenderit officia excepteur.",
+            "spans": []
+          }
+        ]
+      },
+      {
+        "title": "redefine open-source e-services",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Non elit velit tempor aute exercitation. Nostrud est deserunt in mollit ex ipsum ex.",
+            "spans": []
+          }
+        ]
+      },
+      {
+        "title": "integrate innovative niches",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Enim nostrud mollit dolor elit ad enim quis ut irure sunt qui aliquip exercitation sunt.",
+            "spans": []
+          }
+        ]
+      },
+      {
+        "title": "streamline B2C e-business",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Aliquip et incididunt aliquip dolore cillum in officia deserunt. Dolor nostrud proident cupidatat culpa ipsum consequat adipisicing magna minim laborum veniam aute anim.",
+            "spans": []
+          }
+        ]
+      }
+    ]
+  }
+}

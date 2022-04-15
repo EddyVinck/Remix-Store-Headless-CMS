@@ -1,0 +1,28 @@
+{
+  "id": "staff-picks",
+  "label": "Staff Picks",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "picks": {
+        "type": "Group",
+        "config": {
+          "label": "Picks",
+          "fields": {
+            "bookRelation": {
+              "type": "Link",
+              "config": {
+                "label": "Book Relation",
+                "select": "document",
+                "customtypes": [
+                  "book"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

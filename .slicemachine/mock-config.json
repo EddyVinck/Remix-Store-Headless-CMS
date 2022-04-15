@@ -1,7 +1,33 @@
 {
   "_cts": {
     "homepage": {},
-    "contactpage": {}
+    "contactpage": {},
+    "book": {
+      "priceInCents": {
+        "content": 999
+      },
+      "authorName": {
+        "content": "John Doe"
+      },
+      "description": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      },
+      "chapters": {
+        "content": {
+          "config": {
+            "patternType": "PARAGRAPH",
+            "blocks": 1
+          }
+        }
+      }
+    },
+    "book-category": {},
+    "staff-picks": {
+      "picks": {}
+    }
   },
   "slices": {
     "HeroSlice": [

@@ -1,6 +1,8 @@
 {
   "localSliceSimulatorURL": "http://localhost:3000/slice-simulator",
   "apiEndpoint": "https://remix-headless.prismic.io/api/v2",
-  "libraries": ["@/slices"],
-  "_latest": "0.1.0"
+  "libraries": [
+    "@/slices"
+  ],
+  "_latest": "0.3.0"
 }
