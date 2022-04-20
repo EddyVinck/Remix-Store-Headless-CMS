@@ -1,20 +1,20 @@
 {
-  "id": "984ef3fb-2afe-45b2-a599-b4f85a36ac2a",
-  "uid": "aut-ex-voluptas",
+  "id": "f35d34bd-a5a6-4a2a-a87c-be4f2289e294",
+  "uid": "nam-et-autem",
   "type": "book",
   "data": {
-    "title": "maximize front-end convergence",
+    "title": "recontextualize wireless supply-chains",
     "authorName": "John Doe",
     "description": [
       {
         "type": "paragraph",
-        "text": "Ad ut reprehenderit veniam culpa consectetur tempor. Nisi consectetur in incididunt ad in amet. Aliquip nostrud pariatur enim qui aute sit culpa cillum deserunt voluptate quis mollit laboris ad.",
+        "text": "Adipisicing esse sunt elit proident dolor anim aliqua amet.",
         "spans": []
       }
     ],
     "category": {
       "link_type": "Web",
-      "url": "https://slicemachine.dev"
+      "url": "http://twitter.com"
     },
     "priceInCents": 999,
     "coverImage": {
@@ -24,45 +24,65 @@
       },
       "alt": "Placeholder image",
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43?w=900&h=500&fit=crop"
+      "url": "https://images.unsplash.com/photo-1587653915936-5623ea0b949a?w=900&h=500&fit=crop"
     },
     "chapters": [
       {
-        "title": "redefine e-business portals",
+        "title": "incubate turn-key e-tailers",
         "content": [
           {
             "type": "paragraph",
-            "text": "Mollit non ex consequat non deserunt consectetur anim magna voluptate. Anim tempor fugiat officia eiusmod anim laboris cillum. Non laborum est incididunt culpa deserunt veniam cillum proident exercitation reprehenderit officia excepteur.",
+            "text": "Dolor qui sit ipsum anim aliquip dolore. Ullamco cupidatat proident proident velit veniam nostrud anim culpa nostrud do reprehenderit.",
             "spans": []
           }
         ]
       },
       {
-        "title": "redefine open-source e-services",
+        "title": "visualize impactful web services",
         "content": [
           {
             "type": "paragraph",
-            "text": "Non elit velit tempor aute exercitation. Nostrud est deserunt in mollit ex ipsum ex.",
+            "text": "Culpa nostrud eiusmod commodo eiusmod proident adipisicing nulla. Magna mollit sit officia tempor officia adipisicing ex nostrud nostrud fugiat cillum. Duis aliquip magna voluptate adipisicing aliqua sit dolor ipsum ullamco Lorem ullamco enim.",
             "spans": []
           }
         ]
       },
       {
-        "title": "integrate innovative niches",
+        "title": "synthesize user-centric e-commerce",
         "content": [
           {
             "type": "paragraph",
-            "text": "Enim nostrud mollit dolor elit ad enim quis ut irure sunt qui aliquip exercitation sunt.",
+            "text": "Ex consectetur ipsum aliquip aliqua elit sint velit deserunt.",
             "spans": []
           }
         ]
       },
       {
-        "title": "streamline B2C e-business",
+        "title": "architect mission-critical platforms",
         "content": [
           {
             "type": "paragraph",
-            "text": "Aliquip et incididunt aliquip dolore cillum in officia deserunt. Dolor nostrud proident cupidatat culpa ipsum consequat adipisicing magna minim laborum veniam aute anim.",
+            "text": "In officia aute nulla duis magna consequat ea exercitation.",
+            "spans": []
+          }
+        ]
+      },
+      {
+        "title": "incentivize strategic solutions",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Minim fugiat aliqua ipsum tempor officia. Nisi quis aliquip aliquip occaecat occaecat commodo sunt enim elit aliquip minim ut ullamco ullamco. Tempor nulla irure ipsum nostrud adipisicing do nisi ea in et ex minim.",
+            "spans": []
+          }
+        ]
+      },
+      {
+        "title": "strategize integrated deliverables",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Officia cillum enim excepteur enim ullamco commodo consectetur laboris eiusmod ex laboris veniam exercitation laboris.",
             "spans": []
           }
         ]

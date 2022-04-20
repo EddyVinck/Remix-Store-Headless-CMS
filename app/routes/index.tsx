@@ -37,6 +37,8 @@ export const loader: LoaderFunction = async () => {
 
 export default function Index() {
   const data = useLoaderData<LoaderData>();
+
+  console.log(data.books);
   return (
     <main>
       <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
