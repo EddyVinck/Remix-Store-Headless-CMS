@@ -18,9 +18,14 @@ export const BookListItem: FC<BookListItemProps> = ({ book }) => {
   return (
     <div className="flex flex-col gap-4">
       <img src={book.data.coverImage.url} alt={book.data.coverImage.alt} />
-      <h2>
-        {book.data.title} - {centsToDollars(book.data.priceInCents)}
-      </h2>
+      <div>
+        <h2 className="font-bold">
+          {book.data.title} - {centsToDollars(book.data.priceInCents)}
+        </h2>
+        {book.data?.category?.data.title && (
+          <span className="text-sm">{book.data?.category?.data.title}</span>
+        )}
+      </div>
     </div>
   );
 };

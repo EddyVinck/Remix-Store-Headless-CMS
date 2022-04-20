@@ -10,8 +10,17 @@ export const bookDataQuery = `{
     title
     priceInCents
     coverImage
+    category {
+      uid
+      title
+    }
   }
 }`;
+
+export type BookCategory = {
+  uid: string;
+  title: string;
+};
 
 export type BookData = {
   title: string;
@@ -19,7 +28,9 @@ export type BookData = {
   description: prismicT.RichTextField;
   priceInCents: number;
   coverImage: prismicT.ImageField;
-  category: prismicT.RelationField;
+  category?: {
+    data: BookCategory;
+  };
   chapters: prismicT.GroupField<{
     title: string;
     content: prismicT.RichTextField;
@@ -28,7 +39,7 @@ export type BookData = {
 
 export type BookListData = Pick<
   BookData,
-  "authorName" | "title" | "priceInCents" | "coverImage"
+  "authorName" | "title" | "priceInCents" | "coverImage" | "category"
 >;
 
 export type Book<TData = BookData> = {
