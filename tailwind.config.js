@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       colors: {
         // https://coolors.co/191d32-282f44-453a49-6d3b47-ba2c73
-        primary: { 500: "#BA2C73", 600: "#ac286a" },
+        primary: { 500: "#247CBC", 600: "#135B8F" },
       },
     },
   },
