@@ -8,13 +8,12 @@ import {
 } from "remix";
 import type { MetaFunction } from "remix";
 import styles from "~/styles/app.css";
-import favicon from "../public/favicon.png";
 import { PrismicProvider } from "~/components/prismic/provider";
 
 export function links() {
   return [
     { rel: "stylesheet", href: styles },
-    { rel: "icon", type: "image/png", href: favicon },
+    { rel: "icon", type: "image/png", href: "favicon.png" },
   ];
 }
 
