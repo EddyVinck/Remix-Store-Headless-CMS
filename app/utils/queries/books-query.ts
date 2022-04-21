@@ -5,7 +5,6 @@ import * as prismicT from "@prismicio/types";
  */
 export const bookDataQuery = `{
   book {
-    uid
     authorName
     title
     priceInCents
