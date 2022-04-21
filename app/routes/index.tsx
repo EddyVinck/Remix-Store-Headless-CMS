@@ -65,7 +65,7 @@ export default function Index() {
         <section className="container grid grid-cols-1 gap-6">
           <h1 className="text-4xl font-bold">Books</h1>
           <div>
-            <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 gap-y-10">
               {data.books.map((book) => (
                 <li key={book.uid}>
                   <BookListItem book={book} />

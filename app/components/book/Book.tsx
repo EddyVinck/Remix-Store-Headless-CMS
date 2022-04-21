@@ -10,6 +10,7 @@ export const BookListItem: FC<BookListItemProps> = ({ book }) => {
 
   useEffect(() => {
     if (process.env.NODE_ENV === "development" && !isValid) {
+      console.error({ book });
       throw new Error(`Invalid book: ${JSON.stringify(book)}`);
     }
   }, [book]);
