@@ -9,6 +9,8 @@ import {
 import type { MetaFunction } from "remix";
 import styles from "~/styles/app.css";
 import { PrismicProvider } from "~/components/prismic/provider";
+import { Footer } from "./components/footer";
+import { Navbar } from "./components/navbar";
 
 export function links() {
   return [
@@ -32,7 +34,9 @@ export default function App() {
       </head>
       <body>
         <PrismicProvider>
+          <Navbar />
           <Outlet />
+          <Footer />
         </PrismicProvider>
         <ScrollRestoration />
         <Scripts />

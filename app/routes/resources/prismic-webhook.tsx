@@ -104,8 +104,6 @@ export const action: ActionFunction = async ({ request }) => {
       return json({ message: "Signature mismatch" }, 401);
     }
 
-    console.log("publish payload with docs: ", { documents });
-
     documents.forEach((docId) => {
       updatePrismicDocumentInCache(docId);
     });
