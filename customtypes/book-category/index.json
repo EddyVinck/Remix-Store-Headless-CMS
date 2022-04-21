@@ -18,6 +18,17 @@
           "label": "Title",
           "placeholder": "Your Title"
         }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "Image",
+          "constraint": {
+            "width": 300,
+            "height": 300
+          },
+          "thumbnails": []
+        }
       }
     }
   }

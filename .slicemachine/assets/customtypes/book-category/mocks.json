@@ -1,8 +1,17 @@
 {
-  "id": "7d0200c7-49cc-4ca7-a2a9-b8aa85c8d8ef",
-  "uid": "provident-voluptatem-exercitationem",
+  "id": "db4c2ebb-8dd9-4aaf-901e-4865848624d0",
+  "uid": "reiciendis-adipisci-nihil",
   "type": "book-category",
   "data": {
-    "title": "synergize integrated e-business"
+    "title": "empower B2C networks",
+    "image": {
+      "dimensions": {
+        "width": 300,
+        "height": 300
+      },
+      "alt": "Placeholder image",
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb?w=300&h=300&fit=crop"
+    }
   }
 }
