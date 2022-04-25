@@ -1,4 +1,5 @@
-import { Logo } from "../logo/Logo";
+import { Link } from "~/components/link";
+import { Logo } from "~/components/logo";
 
 export const Navbar = () => {
   return (
@@ -9,18 +10,12 @@ export const Navbar = () => {
             <Logo />
           </div>
           <nav className="hidden space-x-8 text-sm font-medium md:flex">
-            <a className="text-gray-500" href="#">
-              About
-            </a>
-            <a className="text-gray-500" href="#">
-              Blog
-            </a>
-            <a className="text-gray-500" href="#">
-              Projects
-            </a>
-            <a className="text-gray-500" href="#">
-              Contact
-            </a>
+            <Link className="text-gray-500" href="about-us">
+              About us
+            </Link>
+            <Link className="text-gray-500" href="categories">
+              Categories
+            </Link>
           </nav>
           <div className="items-center justify-end flex-1 hidden space-x-4 sm:flex">
             <a
