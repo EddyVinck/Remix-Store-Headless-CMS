@@ -27,6 +27,9 @@ export const linkResolver: LinkResolverFunction = (document) => {
     // return `/${doc.lang}/${doc.uid}`;
     return `/${document.uid}`;
   }
+  if (document.type === "book-category") {
+    return `/category/${document.uid}`;
+  }
   if (document.type === "home") {
     // return `/${doc.lang}`;
     return "/";
