@@ -16,6 +16,7 @@ import {
   BookCategoryList,
 } from "~/utils/queries/book-categories-query";
 import { BookCategoryListItem } from "~/components/book-category";
+import { Link } from "~/components/link";
 
 type LoaderData = {
   slices: SliceLike[];
@@ -80,7 +81,9 @@ export default function Index() {
             <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {data.bookCategories.map((category) => (
                 <li key={category.uid}>
-                  <BookCategoryListItem category={category} />
+                  <Link href={`categories/${category.uid}`}>
+                    <BookCategoryListItem category={category} />
+                  </Link>
                 </li>
               ))}
             </ul>
