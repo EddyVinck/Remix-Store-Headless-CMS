@@ -7,8 +7,8 @@ import {
   getPrismicDocumentFromCache,
   prismicClient,
 } from "~/utils/prismic.server";
-import type { BookList } from "~/utils/queries/books-query";
-import { bookDataQuery } from "~/utils/queries/books-query";
+import type { BookList } from "~/utils/queries/book-list-query";
+import { bookListDataQuery } from "~/utils/queries/book-list-query";
 import { BookListItem } from "~/components/book";
 import { shuffle } from "~/utils/array/shuffle";
 import {
@@ -30,7 +30,7 @@ export const loader: LoaderFunction = async () => {
       routes: [homepageRoute],
     });
     const books = await prismicClient.getByType("book", {
-      graphQuery: bookDataQuery,
+      graphQuery: bookListDataQuery,
     });
     const bookCategories = await prismicClient.getByType("book-category", {
       graphQuery: bookCategoriesQuery,
@@ -69,7 +69,9 @@ export default function Index() {
             <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 gap-y-10">
               {data.books.map((book) => (
                 <li key={book.uid}>
-                  <BookListItem book={book} />
+                  <Link href={`/book/${book.uid}`}>
+                    <BookListItem book={book} />
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -81,7 +83,7 @@ export default function Index() {
             <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
               {data.bookCategories.map((category) => (
                 <li key={category.uid}>
-                  <Link href={`categories/${category.uid}`}>
+                  <Link href={`/categories/${category.uid}`}>
                     <BookCategoryListItem category={category} />
                   </Link>
                 </li>

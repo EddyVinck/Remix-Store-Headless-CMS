@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react";
-import { isValidBook, isValidListBookItem } from "~/utils/book/isValidBook";
+import { isValidListBookItem } from "~/utils/book/isValidBook";
 import { centsToDollars } from "~/utils/money/centsToDollars";
-import type { BookListItem as BookListItemData } from "~/utils/queries/books-query";
+import type { BookListItem as BookListItemData } from "~/utils/queries/book-list-query";
 
 type BookListItemProps = { book: BookListItemData };
 
