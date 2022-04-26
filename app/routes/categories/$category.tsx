@@ -2,9 +2,10 @@ import { LoaderFunction, useCatch, useLoaderData, useParams } from "remix";
 import { BookListItem } from "~/components/book";
 import { PrismicDocument } from "~/types/prismic";
 import { prismicClient } from "~/utils/prismic.server";
+import { bookCategoriesQuery } from "~/utils/queries/book-categories-query";
 import { bookDataQuery, BookList } from "~/utils/queries/books-query";
 
-type LoaderData = { books: BookList };
+type LoaderData = { books: BookList; bookCategory: PrismicDocument };
 
 export const loader: LoaderFunction = async ({ request, params }) => {
   const { category = "" } = params;
@@ -16,10 +17,14 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   }
 
   let booksForCategory: PrismicDocument[];
+  let bookCategory: PrismicDocument;
   try {
     // TODO: add caching
     const books = await prismicClient.getByType("book", {
       graphQuery: bookDataQuery,
+    });
+    bookCategory = await prismicClient.getByUID("book-category", category, {
+      graphQuery: bookCategoriesQuery,
     });
     // TODO: filter via Prismic Predicates instead of this manual filtering
     booksForCategory = books.results.filter(
@@ -33,17 +38,17 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 
   return {
     books: booksForCategory as unknown as BookList,
+    bookCategory,
   };
 };
 
 export default function Category() {
   const data = useLoaderData<LoaderData>();
-  const params = useParams();
 
   return (
     <div>
-      <h2 className="text-4xl font-bold leading-tight mb-2">
-        Books about {params.category}
+      <h2 className="text-4xl font-bold leading-tight mb-6">
+        Books about {data.bookCategory.data.title}
       </h2>
       <div>
         <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 gap-y-10">
@@ -65,7 +70,7 @@ export const CatchBoundary = () => {
   return (
     <div>
       <h2 className="text-4xl font-bold leading-tight mb-2">
-        Books about {params.category}
+        Books about {params.category?.split("-").join(" ")}
       </h2>
       <p>
         <strong>{caught.status}</strong>: {caught.data}
