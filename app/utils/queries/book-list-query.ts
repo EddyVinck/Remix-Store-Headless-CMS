@@ -1,9 +1,9 @@
-import * as prismicT from "@prismicio/types";
+import { BookData } from "./book-query";
 
 /**
  * Prismic GraphQuery for the list of books
  */
-export const bookDataQuery = `{
+export const bookListDataQuery = `{
   book {
     authorName
     title
@@ -19,21 +19,6 @@ export const bookDataQuery = `{
 export type BookCategory = {
   uid: string;
   title: string;
-};
-
-export type BookData = {
-  title: string;
-  authorName: string;
-  description: prismicT.RichTextField;
-  priceInCents: number;
-  coverImage: prismicT.ImageField;
-  category?: {
-    data: BookCategory;
-  };
-  chapters: prismicT.GroupField<{
-    title: string;
-    content: prismicT.RichTextField;
-  }>;
 };
 
 export type BookListData = Pick<

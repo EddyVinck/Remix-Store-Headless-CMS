@@ -1,7 +1,5 @@
 import { FC, useEffect } from "react";
-import { isValidBook, isValidListBookItem } from "~/utils/book/isValidBook";
 import { isValidBookCategory } from "~/utils/category/isValidCategory";
-import { centsToDollars } from "~/utils/money/centsToDollars";
 import type { BookCategoryListItem as BookCategoryListItemData } from "~/utils/queries/book-categories-query";
 
 type BookCategoryListItemProps = { category: BookCategoryListItemData };
