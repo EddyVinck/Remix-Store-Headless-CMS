@@ -1,22 +1,23 @@
-import type { BookData, BookListItem } from "../queries/books-query";
+import type { BookListItem } from "../queries/book-list-query";
 import type { NonNullable } from "ts-toolbelt/out/Object/NonNullable";
+import type { Book, BookData } from "~/utils/queries/book-query";
 
 export const isValidBook = (
-  bookData: BookData
-): bookData is NonNullable<BookData, keyof BookData, "deep"> => {
+  book: Book
+): book is NonNullable<Book, keyof Book, "deep"> => {
   return (
-    typeof bookData.title === "string" &&
-    typeof bookData.authorName === "string" &&
-    typeof bookData.priceInCents === "number" &&
-    typeof bookData.coverImage === "object" &&
-    typeof bookData.coverImage.url === "string" &&
-    typeof bookData.coverImage.alt === "string" &&
-    typeof bookData.coverImage.dimensions === "object" &&
-    typeof bookData.coverImage.dimensions?.width === "number" &&
-    typeof bookData.coverImage.dimensions.height === "number" &&
-    typeof bookData.description === "object" &&
-    typeof bookData.category === "object" &&
-    typeof bookData.chapters === "object"
+    typeof book.data.title === "string" &&
+    typeof book.data.authorName === "string" &&
+    typeof book.data.priceInCents === "number" &&
+    typeof book.data.coverImage === "object" &&
+    typeof book.data.coverImage.url === "string" &&
+    typeof book.data.coverImage.alt === "string" &&
+    typeof book.data.coverImage.dimensions === "object" &&
+    typeof book.data.coverImage.dimensions?.width === "number" &&
+    typeof book.data.coverImage.dimensions.height === "number" &&
+    typeof book.data.description === "object" &&
+    typeof book.data.category === "object" &&
+    typeof book.data.chapters === "object"
   );
 };
 
