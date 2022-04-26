@@ -15,7 +15,7 @@ import { Navbar } from "./components/navbar";
 export function links() {
   return [
     { rel: "stylesheet", href: styles },
-    { rel: "icon", type: "image/png", href: "favicon.png" },
+    { rel: "icon", type: "image/png", href: "/favicon.png" },
   ];
 }
 

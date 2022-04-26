@@ -1,4 +1,11 @@
-import { json, LoaderFunction, Outlet, useCatch, useLoaderData } from "remix";
+import {
+  json,
+  LoaderFunction,
+  Outlet,
+  useCatch,
+  useLoaderData,
+  useParams,
+} from "remix";
 import { prismicClient } from "~/utils/prismic.server";
 import {
   bookCategoriesQuery,
@@ -11,12 +18,13 @@ type LoaderData = {
   bookCategories: BookCategoryList;
 };
 
-export const loader: LoaderFunction = async () => {
+export const loader: LoaderFunction = async ({ params }) => {
   try {
     // TODO: add caching
     const bookCategories = await prismicClient.getByType("book-category", {
       graphQuery: bookCategoriesQuery,
     });
+
     const data: LoaderData = {
       bookCategories: bookCategories.results as unknown as BookCategoryList,
     };
@@ -30,13 +38,21 @@ export const loader: LoaderFunction = async () => {
 
 export default function CategoriesLayout() {
   const data = useLoaderData<LoaderData>();
+  const params = useParams();
+
+  // Using useParams here instead of the loader because Remix (by design) won't call loaders of common ancestor routes without a mutation/action
+  // Doing so in the loader would mean having stale data, e.g. showing the incorrect category title after changing categories
+  const currentCategory = data.bookCategories.find(
+    (category) => category.uid === params.category
+  );
+  const title = currentCategory
+    ? `${currentCategory.data.title} Books`
+    : "Explore your favorite book genres";
 
   return (
     <main className="pt-16 pb-32 container grid grid-cols-1 gap-8">
       <div className="flex flex-col gap-4">
-        <h1 className="text-5xl font-bold leading-tight mb-2">
-          Explore your favorite book genres
-        </h1>
+        <h1 className="text-5xl font-bold leading-tight mb-2">{title}</h1>
         <p>Take a look around. We have the best books.</p>
       </div>
       <div>
