@@ -56,7 +56,7 @@ export default function CategoriesLayout() {
         <p>Take a look around. We have the best books.</p>
       </div>
       <div>
-        <h2 className="text-4xl font-bold leading-tight mb-2">Categories</h2>
+        <h2 className="text-4xl font-bold leading-tight mb-6">Categories</h2>
         <div>
           <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {data.bookCategories.map((category) => (
