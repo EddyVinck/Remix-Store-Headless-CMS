@@ -4,7 +4,7 @@ import { Logo } from "~/components/logo";
 export const Navbar = () => {
   return (
     <header className="shadow-sm">
-      <div className="max-w-screen-xl p-4 mx-auto">
+      <div className="container p-4 mx-auto">
         <div className="flex items-center justify-between space-x-4 lg:space-x-10">
           <div className="flex lg:w-0 lg:flex-1">
             <Logo />
