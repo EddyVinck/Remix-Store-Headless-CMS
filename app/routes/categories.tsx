@@ -6,7 +6,7 @@ import {
   useLoaderData,
   useParams,
 } from "remix";
-import { prismicClient } from "~/utils/prismic.server";
+import { getPrismicTypeFromCache } from "~/utils/prismic.server";
 import {
   bookCategoriesQuery,
   BookCategoryList,
@@ -21,7 +21,7 @@ type LoaderData = {
 export const loader: LoaderFunction = async ({ params }) => {
   try {
     // TODO: add caching
-    const bookCategories = await prismicClient.getByType("book-category", {
+    const bookCategories = await getPrismicTypeFromCache("book-category", {
       graphQuery: bookCategoriesQuery,
     });
 

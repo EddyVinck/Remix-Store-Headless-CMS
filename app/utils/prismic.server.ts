@@ -3,6 +3,7 @@ import { PrismicDocument } from "~/types/prismic";
 import NodeCache from "node-cache";
 import { accessToken, endpoint } from "./prismic-config.server";
 import { prismicRoutes } from "./prismic";
+import * as prismicT from "@prismicio/types";
 
 export const prismicClient = prismic.createClient(endpoint, {
   fetch,
@@ -15,12 +16,12 @@ const prismicCache = new NodeCache({
   maxKeys: 100, // maximum amount of entries, an error is thrown if we try to go over it
 });
 
-function getCacheKey(customType: string, uid: string): string {
+function getCacheKey(customType: string, serializedArgs: string): string {
   try {
-    return `${customType}-${uid}`;
+    return `${customType}-${serializedArgs}`;
   } catch (error) {
     throw new Error(
-      `Could not create cache key with arguments for customType ${customType} and UID ${uid}!`
+      `Could not create cache key with arguments for customType ${customType} and args ${serializedArgs}!`
     );
   }
 }
@@ -38,6 +39,33 @@ export async function getPrismicDocumentFromCache(
     console.log(`[cache] MISS ${cacheMessage}`);
     try {
       const doc = await prismicClient.getByUID(customType, uid, params);
+      prismicCache.set(key, doc);
+      return doc;
+    } catch (error) {
+      throw new Response("Not found.", {
+        status: 404,
+      });
+    }
+  }
+
+  console.log(`[cache] HIT ${cacheMessage}`);
+
+  return cacheHit;
+}
+
+export async function getPrismicTypeFromCache(
+  customType: string,
+  args: Record<string, any>
+): Promise<ReturnType<typeof prismicClient.getByType>> {
+  const serializedArgs = JSON.stringify(args);
+  const key = getCacheKey(customType, serializedArgs);
+  const cacheHit = prismicCache.get<prismicT.Query<PrismicDocument>>(key);
+  const cacheMessage = `for key ${key}`;
+
+  if (cacheHit === undefined) {
+    console.log(`[cache] MISS ${cacheMessage}`);
+    try {
+      const doc = await prismicClient.getByType(customType, args);
       prismicCache.set(key, doc);
       return doc;
     } catch (error) {
