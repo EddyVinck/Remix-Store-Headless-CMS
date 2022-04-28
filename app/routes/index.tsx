@@ -5,6 +5,7 @@ import HeroSlice from "../../slices/HeroSlice";
 import { SliceTypes, SliceZoneContext } from "~/types/prismic";
 import {
   getPrismicDocumentFromCache,
+  getPrismicTypeFromCache,
   prismicClient,
 } from "~/utils/prismic.server";
 import type { BookList } from "~/utils/queries/book-list-query";
@@ -29,10 +30,10 @@ export const loader: LoaderFunction = async () => {
     const doc = await getPrismicDocumentFromCache("homepage", "home", {
       routes: [homepageRoute],
     });
-    const books = await prismicClient.getByType("book", {
+    const books = await getPrismicTypeFromCache("book", {
       graphQuery: bookListDataQuery,
     });
-    const bookCategories = await prismicClient.getByType("book-category", {
+    const bookCategories = await getPrismicTypeFromCache("book-category", {
       graphQuery: bookCategoriesQuery,
     });
     const data: LoaderData = {

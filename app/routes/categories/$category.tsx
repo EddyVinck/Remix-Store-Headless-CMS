@@ -2,7 +2,10 @@ import { LoaderFunction, useCatch, useLoaderData, useParams } from "remix";
 import { BookListItem } from "~/components/book";
 import { Link } from "~/components/link";
 import { PrismicDocument } from "~/types/prismic";
-import { prismicClient } from "~/utils/prismic.server";
+import {
+  getPrismicDocumentFromCache,
+  getPrismicTypeFromCache,
+} from "~/utils/prismic.server";
 import { bookCategoriesQuery } from "~/utils/queries/book-categories-query";
 import { bookListDataQuery, BookList } from "~/utils/queries/book-list-query";
 
@@ -21,13 +24,16 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   let bookCategory: PrismicDocument;
   try {
     // TODO: add caching
-    const books = await prismicClient.getByType("book", {
+    const books = await getPrismicTypeFromCache("book", {
       graphQuery: bookListDataQuery,
     });
-    bookCategory = await prismicClient.getByUID("book-category", category, {
-      graphQuery: bookCategoriesQuery,
-    });
-    // TODO: filter via Prismic Predicates instead of this manual filtering
+    bookCategory = await getPrismicDocumentFromCache(
+      "book-category",
+      category,
+      {
+        graphQuery: bookCategoriesQuery,
+      }
+    );
     booksForCategory = books.results.filter(
       (book) => book.data.category.uid === category
     );

@@ -5,7 +5,10 @@ import { Link } from "~/components/link";
 import { PrismicDocument } from "~/types/prismic";
 import { isValidBook, isValidListBookItem } from "~/utils/book/isValidBook";
 import { centsToDollars } from "~/utils/money/centsToDollars";
-import { prismicClient } from "~/utils/prismic.server";
+import {
+  getPrismicDocumentFromCache,
+  prismicClient,
+} from "~/utils/prismic.server";
 import { Book, bookDataQuery } from "~/utils/queries/book-query";
 
 type LoaderData = { book: Book };
@@ -22,7 +25,7 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   let book: PrismicDocument;
   try {
     // TODO: add caching
-    book = await prismicClient.getByUID("book", bookTitle, {
+    book = await getPrismicDocumentFromCache("book", bookTitle, {
       graphQuery: bookDataQuery,
     });
   } catch (error) {
