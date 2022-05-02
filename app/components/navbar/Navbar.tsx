@@ -16,6 +16,9 @@ export const Navbar = () => {
             <Link className="text-gray-500" href="categories">
               Categories
             </Link>
+            <Link className="text-gray-500" href="search">
+              Search
+            </Link>
           </nav>
           <div className="items-center justify-end flex-1 hidden space-x-4 sm:flex">
             <a
