@@ -1,56 +1,48 @@
-import { ActionFunction, Form, Outlet, redirect } from "remix";
+import { json, LoaderFunction, useLoaderData } from "remix";
+import { BookCategoryListItem } from "~/components/book-category";
+import { Link } from "~/components/link";
+import { getPrismicTypeFromCache } from "~/utils/prismic.server";
+import {
+  bookCategoriesQuery,
+  BookCategoryList,
+} from "~/utils/queries/book-categories-query";
 
-export const action: ActionFunction = async ({ request }) => {
-  const form = await request.formData();
-  const searchString = form.get("search");
-  return redirect(`/search/${searchString}`);
+type LoaderData = {
+  bookCategories: BookCategoryList;
+};
+
+export const loader: LoaderFunction = async () => {
+  try {
+    const bookCategories = await getPrismicTypeFromCache("book-category", {
+      graphQuery: bookCategoriesQuery,
+    });
+    const data: LoaderData = {
+      bookCategories: bookCategories.results as unknown as BookCategoryList,
+    };
+    return json(data);
+  } catch (error) {
+    throw new Response("Not found.", {
+      status: 404,
+    });
+  }
 };
 
 export default function SearchIndex() {
+  const data = useLoaderData<LoaderData>();
   return (
-    <>
-      <section className="p-12 bg-gray-100 sm:p-16 lg:p-24">
-        <div className="max-w-xl mx-auto text-center">
-          <p className="text-sm font-medium text-gray-600">Search</p>
-          <p className="mt-2 text-3xl font-bold text-black sm:text-4xl">
-            What book are you looking for?
-          </p>
-          <Form className="mt-8 sm:flex" method="post">
-            <div className="sm:flex-1">
-              <label htmlFor="search" className="sr-only">
-                Email
-              </label>
-              <input
-                name="search"
-                type="search"
-                placeholder="Book title..."
-                className="w-full p-3 text-black bg-white border-2 border-gray-300 rounded-lg"
-              />
-            </div>
-            <button
-              type="submit"
-              className="flex items-center justify-between w-full px-5 py-3 mt-4 font-medium text-white bg-blue-600 rounded-lg sm:w-auto sm:mt-0 sm:ml-4 hover:bg-blue-500"
-            >
-              Search
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="flex-shrink-0 w-4 h-4 ml-3"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
-              </svg>
-            </button>
-          </Form>
-        </div>
-      </section>
-      <Outlet />
-    </>
+    <section className="container py-16 grid grid-cols-1 gap-6">
+      <h1 className="text-4xl font-bold">Categories</h1>
+      <div>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {data.bookCategories.map((category) => (
+            <li key={category.uid}>
+              <Link href={`/categories/${category.uid}`}>
+                <BookCategoryListItem category={category} />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   );
 }
