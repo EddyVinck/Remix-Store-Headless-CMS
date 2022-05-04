@@ -23,7 +23,6 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   let booksForCategory: PrismicDocument[];
   let bookCategory: PrismicDocument;
   try {
-    // TODO: add caching
     const books = await getPrismicTypeFromCache("book", {
       graphQuery: bookListDataQuery,
     });
