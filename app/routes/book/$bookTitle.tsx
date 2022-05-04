@@ -24,7 +24,6 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 
   let book: PrismicDocument;
   try {
-    // TODO: add caching
     book = await getPrismicDocumentFromCache("book", bookTitle, {
       graphQuery: bookDataQuery,
     });
