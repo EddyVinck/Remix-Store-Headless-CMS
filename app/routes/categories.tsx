@@ -18,7 +18,7 @@ type LoaderData = {
   bookCategories: BookCategoryList;
 };
 
-export const loader: LoaderFunction = async ({ params }) => {
+export const loader: LoaderFunction = async () => {
   try {
     const bookCategories = await getPrismicTypeFromCache("book-category", {
       graphQuery: bookCategoriesQuery,

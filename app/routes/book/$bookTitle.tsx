@@ -3,17 +3,14 @@ import { useEffect } from "react";
 import { LoaderFunction, useCatch, useLoaderData, useParams } from "remix";
 import { Link } from "~/components/link";
 import { PrismicDocument } from "~/types/prismic";
-import { isValidBook, isValidListBookItem } from "~/utils/book/isValidBook";
+import { isValidBook } from "~/utils/book/isValidBook";
 import { centsToDollars } from "~/utils/money/centsToDollars";
-import {
-  getPrismicDocumentFromCache,
-  prismicClient,
-} from "~/utils/prismic.server";
+import { getPrismicDocumentFromCache } from "~/utils/prismic.server";
 import { Book, bookDataQuery } from "~/utils/queries/book-query";
 
 type LoaderData = { book: Book };
 
-export const loader: LoaderFunction = async ({ request, params }) => {
+export const loader: LoaderFunction = async ({ params }) => {
   const { bookTitle = "" } = params;
 
   if (!bookTitle) {
@@ -60,7 +57,6 @@ export default function Category() {
           </h1>
           <p className="text-lg">{`Written by ${book.data.authorName}`}.</p>
           <PrismicRichText field={book.data.description} />
-          {/* TODO: fake buy? */}
           <Link className="btn btn-primary" href="#">
             Buy now - {centsToDollars(book.data.priceInCents)}
           </Link>

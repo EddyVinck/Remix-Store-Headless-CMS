@@ -8,11 +8,7 @@ interface SliceFields extends SliceLike {
 }
 
 const HeroSlice: SliceComponent<SliceFields> = ({
-  slice,
-  index,
-  context,
-  children,
-  slices,
+  slice /* ,index, context, children, slices */,
 }) => {
   return (
     <section
