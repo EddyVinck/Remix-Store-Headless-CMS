@@ -1,6 +1,11 @@
-# Welcome to Remix!
+# Welcome to the Remix Book Store!
+
+This is a Remix project using Prismic as a Headless CMS.
 
 - [Remix Docs](https://remix.run/docs)
+- [Prismic Docs](https://prismic.io)
+
+![demo app gif](./.github/images/demo.gif)
 
 ## Development
 
